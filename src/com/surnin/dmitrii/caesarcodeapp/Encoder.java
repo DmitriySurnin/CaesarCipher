@@ -9,8 +9,8 @@ public class Encoder {
 	{
 		 String encryptStr = "";
 		String ALPHABET;
-
-		if (Character.UnicodeBlock.of(inputStr.charAt(1)).equals(Character.UnicodeBlock.CYRILLIC))
+		boolean language = Character.UnicodeBlock.of(inputStr.charAt(1)).equals(Character.UnicodeBlock.CYRILLIC)?true:false;
+		if (language)
 		ALPHABET = ALPHABET_EN;
 		else ALPHABET = ALPHABET_RU;
 
@@ -30,9 +30,9 @@ public class Encoder {
 	}
 
 	public static String decode(String encrypted, int key) {
+		boolean language = Character.UnicodeBlock.of(encrypted.charAt(1)).equals(Character.UnicodeBlock.CYRILLIC)?true:false;
 		String ALPHABET;
-
-		if (Character.UnicodeBlock.of(encrypted.charAt(1)).equals(Character.UnicodeBlock.CYRILLIC))
+		if (language)
 			ALPHABET = ALPHABET_EN;
 		else ALPHABET = ALPHABET_RU;
 		int deckey = (ALPHABET.length()-key)%ALPHABET.length();
