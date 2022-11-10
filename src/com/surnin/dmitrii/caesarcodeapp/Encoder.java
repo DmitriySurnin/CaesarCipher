@@ -7,7 +7,6 @@ public class Encoder {
 	public static String encode(String inputStr, int key) {
 		String encryptStr = "";
 		String ALPHABET = "";
-		char c = inputStr.charAt(0);
 		if (Character.UnicodeBlock.of(inputStr.charAt(0)).equals(Character.UnicodeBlock.CYRILLIC)) {
 			ALPHABET = ALPHABET_RU;
 		} else {
