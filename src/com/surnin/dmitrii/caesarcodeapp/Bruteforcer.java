@@ -10,7 +10,7 @@ public class Bruteforcer {
 
 
 	//Setting up instance variables and setter/getter methods
-	public final int NUMBER_OF_LETTERS = 26;
+	public static final int NUMBER_OF_LETTERS = 26;
 	private int numberOfPositions = 0;
 
 	private double[] knownFrequencies = new double[NUMBER_OF_LETTERS];
@@ -23,6 +23,7 @@ public class Bruteforcer {
 	public void setKnownFrequencies(double[] knownFrequencies) {
 		this.knownFrequencies = knownFrequencies;
 	}
+
 
 	//This method reads text from a long file, breaks it down into individual characters, and stores it in the knownFrequencies array
 	public void train(String trainingFileName) {
