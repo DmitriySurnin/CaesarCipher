@@ -8,7 +8,8 @@ public class Encoder {
 	public static String encode(String inputStr, int key)
 	{
 		 String encryptStr = "";
-		 String ALPHABET = "";
+		String ALPHABET;
+
 		if (Character.UnicodeBlock.of(inputStr.charAt(1)).equals(Character.UnicodeBlock.CYRILLIC))
 		ALPHABET = ALPHABET_EN;
 		else ALPHABET = ALPHABET_RU;
@@ -17,7 +18,7 @@ public class Encoder {
 		{
 			if (Character.isLetter(inputStr.charAt(i))){
 				int pos = ALPHABET.indexOf(inputStr.charAt(i));
-				int encryptPos = (key + pos) % ALPHABET.length();
+				int encryptPos = ((key + pos) % ALPHABET.length()); //
 				char encryptChar = ALPHABET.charAt(encryptPos);
 				encryptStr += encryptChar;
 			}
@@ -29,6 +30,12 @@ public class Encoder {
 	}
 
 	public static String decode(String encrypted, int key) {
-		return encode(encrypted, -key);
+		String ALPHABET;
+
+		if (Character.UnicodeBlock.of(encrypted.charAt(1)).equals(Character.UnicodeBlock.CYRILLIC))
+			ALPHABET = ALPHABET_EN;
+		else ALPHABET = ALPHABET_RU;
+		int deckey = (ALPHABET.length()-key)%ALPHABET.length();
+		return encode(encrypted, deckey);
 	}
 }
