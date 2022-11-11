@@ -9,19 +9,23 @@ public class Filenames {
 		String parentDir = path.getParent().toString();
 		String filename = path.getFileName().toString();
 		StringBuilder sb = new StringBuilder();
+		String separator = System.getProperty("file.separator");
 		if (filename.contains("decoded")){
-			sb.append(parentDir + "\\");
+			//sb.append(parentDir + "\\");
+			sb.append(parentDir + separator);
 			sb.append(filename.replaceFirst("decoded","encoded"));
 			filename = sb.toString();
 
 		}else if (filename.contains("encoded")){
-			sb.append(parentDir + "\\");
+			//sb.append(parentDir + "\\");
+			sb.append(parentDir + separator);
 			sb.append(filename.replaceFirst("encoded","decoded"));
 			filename = sb.toString();
 		}
 		else
 		{
-			sb.append(parentDir + "\\");
+			//sb.append(parentDir + "\\");
+			sb.append(parentDir + separator);
 			sb.append(filename.replaceAll("\\.","(encoded)."));
 			filename = sb.toString();
 		}
