@@ -27,7 +27,7 @@ public class Main {
 			try {
 				String original = Files.readString(file, StandardCharsets.UTF_8);
 				String encoded = Encoder.encode(original, key);
-				outputFilename = Filenames.rename(filePath);
+				outputFilename = Filenames.renameFile(filePath);
 				Files.write(Path.of(outputFilename), encoded.getBytes(StandardCharsets.UTF_8));
 			} catch (IOException e) {
 				throw new RuntimeException(e);
@@ -38,7 +38,7 @@ public class Main {
 			try {
 				String encoded = Files.readString(file, StandardCharsets.UTF_8);
 				String decoded = Encoder.decode(encoded, key);
-				outputFilename = Filenames.rename(filePath);
+				outputFilename = Filenames.renameFile(filePath);
 				Files.write(Path.of(outputFilename), decoded.getBytes(StandardCharsets.UTF_8));
 			} catch (IOException e) {
 				throw new RuntimeException(e);
@@ -49,7 +49,7 @@ public class Main {
 				String encoded = Files.readString(file, StandardCharsets.UTF_8);
 				int keyFound = Bruteforcer.bruteForce(encoded);
 				String decoded = Encoder.decode(encoded, keyFound);
-				outputFilename = Filenames.rename(filePath);
+				outputFilename = Filenames.renameFile(filePath);
 				Files.write(Path.of(outputFilename), decoded.getBytes(StandardCharsets.UTF_8));
 			} catch (IOException e) {
 				throw new RuntimeException(e);

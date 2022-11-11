@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Filenames {
-	public static String rename(String inputFileName) {
+	public static String renameFile(String inputFileName) {
 		Path path = Paths.get(inputFileName);
 		String parentDir = path.getParent().toString();
 		String filename = path.getFileName().toString();
