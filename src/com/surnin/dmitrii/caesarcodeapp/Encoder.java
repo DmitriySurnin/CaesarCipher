@@ -36,14 +36,15 @@ public class Encoder {
 
 	public static String decode(String encryptStr, int key) {
 		Alphabet alpha = new Alphabet();
-		String alphabet = "";
+		//String alphabet = "";
+		char[] alphabet;
 		if (Character.UnicodeBlock.of(encryptStr.charAt(0)).equals(Character.UnicodeBlock.CYRILLIC)) {
-			alphabet = String.valueOf(alpha.getAlphabet_ru());
+			alphabet = alpha.getAlphabet_ru();
 		} else {
-			alphabet = String.valueOf(alpha.getAlphabet_en());
+			alphabet = alpha.getAlphabet_en();
 		}
 		// simple -key not working
-		int deckey = (alphabet.length() - key) % alphabet.length();
+		int deckey = (alphabet.length - key) % alphabet.length;
 		return encode(encryptStr, deckey);
 	}
 
