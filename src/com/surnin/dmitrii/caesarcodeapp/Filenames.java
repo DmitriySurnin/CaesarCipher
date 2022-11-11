@@ -4,29 +4,25 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Filenames {
-	public static String rename (String inputFileName){
+	public static String rename(String inputFileName) {
 		Path path = Paths.get(inputFileName);
 		String parentDir = path.getParent().toString();
 		String filename = path.getFileName().toString();
 		StringBuilder sb = new StringBuilder();
+		// that makes the program work in any OS
 		String separator = System.getProperty("file.separator");
-		if (filename.contains("decoded")){
-			//sb.append(parentDir + "\\");
+		if (filename.contains("decoded")) {
 			sb.append(parentDir + separator);
-			sb.append(filename.replaceFirst("decoded","encoded"));
+			sb.append(filename.replaceFirst("decoded", "encoded"));
 			filename = sb.toString();
 
-		}else if (filename.contains("encoded")){
-			//sb.append(parentDir + "\\");
+		} else if (filename.contains("encoded")) {
 			sb.append(parentDir + separator);
-			sb.append(filename.replaceFirst("encoded","decoded"));
+			sb.append(filename.replaceFirst("encoded", "decoded"));
 			filename = sb.toString();
-		}
-		else
-		{
-			//sb.append(parentDir + "\\");
+		} else {
 			sb.append(parentDir + separator);
-			sb.append(filename.replaceAll("\\.","(encoded)."));
+			sb.append(filename.replaceAll("\\.", "(encoded)."));
 			filename = sb.toString();
 		}
 		return filename;

@@ -9,7 +9,7 @@ public class Encoder {
 		Alphabet alpha = new Alphabet();
 		String alphabet = "";
 		String s = System.lineSeparator();
-
+		// what language used
 		if (Character.UnicodeBlock.of(inputStr.charAt(0)).equals(Character.UnicodeBlock.CYRILLIC)) {
 			alphabet = String.valueOf(alpha.getAlphabet_ru());
 		} else {
@@ -42,6 +42,7 @@ public class Encoder {
 		} else {
 			alphabet = String.valueOf(alpha.getAlphabet_en());
 		}
+		// simple -key not working
 		int deckey = (alphabet.length() - key) % alphabet.length();
 		return encode(encryptStr, deckey);
 	}
