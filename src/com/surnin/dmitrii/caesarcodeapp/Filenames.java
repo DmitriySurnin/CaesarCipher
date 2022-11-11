@@ -9,7 +9,7 @@ public class Filenames {
 		String parentDir = path.getParent().toString();
 		String filename = path.getFileName().toString();
 		StringBuilder sb = new StringBuilder();
-		if (filename.contains("(decoded)")){
+		if (filename.contains("decoded")){
 			sb.append(parentDir + "\\");
 			sb.append(filename.replaceFirst("decoded","encoded"));
 			filename = sb.toString();

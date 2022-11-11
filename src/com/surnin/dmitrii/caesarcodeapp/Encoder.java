@@ -2,40 +2,53 @@ package com.surnin.dmitrii.caesarcodeapp;
 
 public class Encoder {
 	// TODO replace with arrays, maybe make a new class
-	public static final String ALPHABET_EN = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	public static final String ALPHABET_RU = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+
 
 	public static String encode(String inputStr, int key) {
 		StringBuilder sb = new StringBuilder();
-		String ALPHABET = "";
+		Alphabet alpha = new Alphabet();
+		String alphabet = "";
+		String s = System.lineSeparator();
+
 		if (Character.UnicodeBlock.of(inputStr.charAt(0)).equals(Character.UnicodeBlock.CYRILLIC)) {
-			ALPHABET = ALPHABET_RU;
+			alphabet = String.valueOf(alpha.getAlphabet_ru());
 		} else {
-			ALPHABET = ALPHABET_EN;
+			alphabet = String.valueOf(alpha.getAlphabet_en());
 		}
 
 		for (int i = 0; i < inputStr.length(); i++) {
-			if (Character.isLetter(inputStr.charAt(i))) {
-				int pos = ALPHABET.indexOf(inputStr.charAt(i));
-				int encryptPos = ((key + pos) % ALPHABET.length()); //
-				char encryptChar = ALPHABET.charAt(encryptPos);
-				sb.append(encryptChar);
-
+//			int pos = alphabet.indexOf(inputStr.charAt(i));
+//			int encryptPos = ((key + pos) % alphabet.length()); //
+//			char encryptChar = alphabet.charAt(encryptPos);
+//			sb.append(encryptChar);
+			if (((inputStr.charAt(i)) != ('\r')) || ((inputStr.charAt(i)) != '\n')) {
+				if (Character.isDigit(inputStr.charAt(i))) {
+					sb.append(inputStr.charAt(i));
+				} else {
+					int pos = alphabet.indexOf(inputStr.charAt(i));
+					int encryptPos = ((key + pos) % alphabet.length()); //
+					char encryptChar = alphabet.charAt(encryptPos);
+					sb.append(encryptChar);
+				}
 			} else {
-				sb.append((char) (inputStr.charAt(i)));
+				sb.append(inputStr.charAt(i));
 			}
 		}
 		return sb.toString();
+
 	}
 
 	public static String decode(String encryptStr, int key) {
-		String ALPHABET = "";
+		Alphabet alpha = new Alphabet();
+		String alphabet = "";
 		if (Character.UnicodeBlock.of(encryptStr.charAt(0)).equals(Character.UnicodeBlock.CYRILLIC)) {
-			ALPHABET = ALPHABET_RU;
+			alphabet = String.valueOf(alpha.getAlphabet_ru());
 		} else {
-			ALPHABET = ALPHABET_EN;
+			alphabet = String.valueOf(alpha.getAlphabet_en());
 		}
-		int deckey = (ALPHABET.length() - key) % ALPHABET.length();
+		int deckey = (alphabet.length() - key) % alphabet.length();
 		return encode(encryptStr, deckey);
 	}
+
 }
+
