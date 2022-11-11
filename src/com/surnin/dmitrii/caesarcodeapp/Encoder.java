@@ -17,10 +17,6 @@ public class Encoder {
 		}
 
 		for (int i = 0; i < inputStr.length(); i++) {
-//			int pos = alphabet.indexOf(inputStr.charAt(i));
-//			int encryptPos = ((key + pos) % alphabet.length()); //
-//			char encryptChar = alphabet.charAt(encryptPos);
-//			sb.append(encryptChar);
 			if (((inputStr.charAt(i)) != ('\r')) || ((inputStr.charAt(i)) != '\n')) {
 				if (Character.isDigit(inputStr.charAt(i))) {
 					sb.append(inputStr.charAt(i));
