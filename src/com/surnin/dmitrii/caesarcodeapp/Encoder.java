@@ -1,11 +1,12 @@
 package com.surnin.dmitrii.caesarcodeapp;
 
 public class Encoder {
+	// TODO replace with arrays, maybe make a new class
 	public static final String ALPHABET_EN = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	public static final String ALPHABET_RU = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
 
 	public static String encode(String inputStr, int key) {
-		String encryptStr = "";
+		StringBuilder sb = new StringBuilder();
 		String ALPHABET = "";
 		if (Character.UnicodeBlock.of(inputStr.charAt(0)).equals(Character.UnicodeBlock.CYRILLIC)) {
 			ALPHABET = ALPHABET_RU;
@@ -18,12 +19,13 @@ public class Encoder {
 				int pos = ALPHABET.indexOf(inputStr.charAt(i));
 				int encryptPos = ((key + pos) % ALPHABET.length()); //
 				char encryptChar = ALPHABET.charAt(encryptPos);
-				encryptStr += encryptChar;
+				sb.append(encryptChar);
+
 			} else {
-				encryptStr += (char) (inputStr.charAt(i));
+				sb.append((char) (inputStr.charAt(i)));
 			}
 		}
-		return encryptStr;
+		return sb.toString();
 	}
 
 	public static String decode(String encryptStr, int key) {
