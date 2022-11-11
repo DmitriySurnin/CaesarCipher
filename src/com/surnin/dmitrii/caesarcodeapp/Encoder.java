@@ -8,7 +8,6 @@ public class Encoder {
 		StringBuilder sb = new StringBuilder();
 		Alphabet alpha = new Alphabet();
 		String alphabet = "";
-		String s = System.lineSeparator();
 		// what language used
 		if (Character.UnicodeBlock.of(inputStr.charAt(0)).equals(Character.UnicodeBlock.CYRILLIC)) {
 			alphabet = String.valueOf(alpha.getAlphabet_ru());
