@@ -1,0 +1,9 @@
+<application>
+  <component name="ConsoleFoldingSettings">
+    <option name="addedPositive">
+      <list>
+        <option value="&quot;-javaagent:C:\Program Files\JetBrains\" />
+      </list>
+    </option>
+  </component>
+</application>
